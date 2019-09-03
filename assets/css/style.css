@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches|Open+Sans:200,300,400,500,700|Roboto:200,300,400,500,700');
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: #212121;
+  margin: 0;
+}
+.navbar{
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: 100000;
+}
+.navbar ul{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.navbar ul li{
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 100%;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+.section{
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.section.flexed{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.section.flexed.opaque:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
+}
+.section.full{
+  height: 100vh;
+}
+.section.full .full{
+  margin-right: -200px !important;
+}
+.section.flexed .full{
+  position: absolute;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  height: 100%;
+  width: 45%;
+  margin-right: -130px;
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+}
+.section.flexed .full .container{
+  margin-right: 130px;
+}
+.section.flexed .full .container h1{
+  font-weight: bolder;
+  color: #212121;
+  font-size: 5em;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+}
+.section.flexed .full .container h2{
+  font-weight: lighter;
+  font-size: 2em;
+  text-align: center;
+  margin: 0;
+}
+.section.flexed .full .inner{
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+}
+.section.flexed .box{
+  margin: 30px;
+}
+.section.flexed .box.near{
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
+.section .small{
+  position: relative;
+  z-index: 10000;
+  max-width: 500px;
+  text-align: justify;
+  font-size: 1.2em;
+  color: white;
+  font-weight: 300;
+}
+.section .medium{
+  position: relative;
+  z-index: 10000;
+  max-width: 650px;
+  text-align: justify;
+  font-size: 1.2em;
+  color: white;
+  font-weight: 300;
+}
+.section.flexed h1{
+  position: relative;
+  z-index: 10000;
+  color: white;
+  font-weight: 400;
+  font-size: 3.5em;
+}
+.section.main{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.white{
+  background: #f1f2f6;
+}
+.section.main:before{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  content: "";
+  top: 0;
+  left: 0;
+}
+.section.main video { animation: .7s fadein ease; animation-fill-mode: forwards; opacity: 0; width: 100%; object-fit: fill; z-index: -2; position: absolute;}
+.section.main h1.title{
+  margin-bottom: 0;
+  font-family: 'Staatliches', cursive !important;
+  color: white;
+  font-weight: 300;
+  font-size: 5em;
+}
+.section.main h2.subtitle{
+  color: white;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+/* register and login */
+
+.section.main.register{
+  background:
+      linear-gradient(
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
+      ),
+      url("https://images.wallpaperscraft.com/image/mountains_peaks_clouds_134015_1920x1080.jpg");    /* si insomma vanno caricate sul server */
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section.main.login{
+  background:
+      linear-gradient(
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.25)
+      ),
+      url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.register_title{
+  align-content: center;
+  margin-bottom: 0;
+  font-family: 'Staatliches', cursive !important;
+  color: white;
+  font-weight: 300;
+  font-size: 5em;
+
+}
+
+.description {
+  color: white;
+  font-weight: 500;
+}
+
+#sign-up{
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto !important;
+    padding: 10px !important;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+}
+
+.row .item {
+    height: 50px;
+    margin: 10px;
+    flex: 1;
+    border: none;
+    text-indent: 20px;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 4px;
+    outline: none;
+    background: white;
+}
+
+.row .button{
+    width: calc(100% - 20px);
+    background: #10ac84;
+    color: #fff;
+    text-indent: 0;
+}
+
+p.terms{
+  color: white;
+  font-size: 1em;
+}
+p.terms a{
+  color: white;
+}
+
+.pswd_reset a{
+  color: white;
+  margin-left: 2%;
+  font-size: 0.8em;
+}
+
+/* not homepage */
+
+.container{
+  width: 100%;
+}
+
+
+/* animations */
+@keyframes fadein {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+
+/* responsive */
+@media all and (max-width: 1250px){
+  .section.flexed .full .inner .container{
+    margin-right: 180px;
+  }
+  .section.flexed .box.near{
+    margin-left: 30px;
+  }
+
+}
+
+@media all and (max-width: 1000px){
+
+  .section.flexed .full{
+    display: none;
+  }
+
+}
+
+@media all and (max-width: 1000px){
+
+  .navbar ul {
+    justify-content: center;
+    padding-left: 0;
+}
+
+}
+
+@media all and (max-width: 700px){
+
+.navbar ul {
+    justify-content: center;
+    padding-left: 0;
+    zoom: 65%;
+  }
+
+  .navbar ul li {
+    font-size: 1.35em;
+  }
+
+.register_title {
+    zoom: 75%;
+  }
+
+.description {
+    font-size: 0.8em;
+    zoom: 55%;
+  }
+
+.row .item {
+  zoom: 75%;
+  }
+
+  .pswd_reset a{
+    zoom: 75%;
+  }
+
+#sign-up {
+    padding: 0 !important;
+  }
+
+p.terms {
+    zoom: 75%;
+  }
+
+}
+
+@media all and (max-width: 450px){
+
+.navbar ul {
+    justify-content: center;
+    padding-left: 0;
+    zoom: 58%;
+  }
+
+  .navbar ul li {
+    font-size: 1.1em;
+  }
+
+  .pswd_reset a{
+    zoom: 70%;
+  }
+}
+
+@media all and (max-width: 320px){
+
+.navbar ul {
+    zoom: 52%;
+  }
+}
