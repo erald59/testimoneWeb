@@ -34,14 +34,13 @@ class Display {
         socket.on('report', report => {
 
             marker = L.marker([report.report_latitude, report.report_longitude]).addTo(map);
-            marker.bindPopup(`<b>${report.report_title}</b><br>${moment.unix(report.report_date).format('DD/MM/YYYY')}<br>`);
+            marker.bindPopup(`<b>${report.report_title}</b><br>${moment.unix(this.report.report_date).format('DD/MM/YYYY')}<br>`);
             markerStartup.push(marker);
             markerDefaultGroup = L.layerGroup(markerStartup).addTo(map);
 
         })
 
     }
-
     staticDisplay() {
 
         $.get("/api/data/getReports", reports => {
@@ -61,6 +60,7 @@ class Display {
     }
 
 }
+
 
 /* Class Functions Active */
 
@@ -132,8 +132,8 @@ class Filters {
         })
     }
 
-		addressFilter(address) {
-				var matcher = new RegExp("(\w*" + address + "\w*)", "i");
+	addressFilter(address) {
+		var matcher = new RegExp("(\w*" + address + "\w*)", "i");
 
         $.get("/api/data/getReports", reports => {
 
@@ -154,6 +154,8 @@ class Filters {
         })
     }
 
+
+
     addressRemove() {
         $.get("/api/data/getReports", reports => {
 
@@ -162,15 +164,18 @@ class Filters {
             })
 
         })
+        
     }
+    
 
-		dateFilter(date) {
+
+	dateFilter(date) {
 
         $.get("/api/data/getReports", reports => {
 
             reports.map(report => {
 
-								var marker_date = moment.unix(report.report_date.toString()).format('DD/MM/YYYY');
+			    var marker_date = moment.unix(report.report_date.toString()).format('DD/MM/YYYY');
                 map.removeLayer(markerDefaultGroup);
 
                 if (date == '') {
@@ -186,52 +191,51 @@ class Filters {
         })
     }
 
-		dateRemove() {
+	dateRemove() {
         $.get("/api/data/getReports", reports => {
 
             reports.map(report => {
-                addressMarker.forEach(marker => map.removeLayer(marker));
+                    addressMarker.forEach(marker => map.removeLayer(marker));
             })
 
         })
-    }
+    }   
 
-		regionWiper() {
-    for (var value of Object.keys(region_markers)) {
-        region_markers[value].forEach(marker => map.removeLayer(marker));
+	regionWiper() {
+        for (var value of Object.keys(region_markers)) {
+            region_markers[value].forEach(marker => map.removeLayer(marker));
+        }
     }
-}
-
+    
 
     restartMarkers() {
         map.removeLayer(markerDefaultGroup);
         markerDefaultGroup.addTo(map);
     }
 
-		filterWiper() {										//rimuove tutti i filtri e gli input dei campi
-			this.regionWiper();
-			this.titleRemove();
-			this.addressRemove();
-			this.dateRemove();
-			$(".item").css({color: "#fff", background: "none"}).removeClass("selected");
-			$("#search-title")[0].value = '';
-			$("#search-address")[0].value = '';
+    filterWiper() {										//rimuove tutti i filtri e gli input dei campi
+        this.regionWiper();
+        this.titleRemove();
+        this.addressRemove();
+        this.dateRemove();
+        $(".item").css({color: "#fff", background: "none"}).removeClass("selected");
+        $("#search-title")[0].value = '';
+        $("#search-address")[0].value = '';
 
-		}
+    }
 
-		fullReset() {										//bottone azzera filtri
-			this.filterWiper();
-			this.restartMarkers();
-			$("#search-date")[0].value = '';
-		}
+    fullReset() {										//bottone azzera filtri
+        this.filterWiper();
+        this.restartMarkers();
+        $("#search-date")[0].value = '';
+    }
 
 }
 
 var little_filter = new Filters();
 
-/* Filters Actions */
 
-/* Filtri per i bottoni delle regioni */
+/* Filters Actions */
 
 $(".item").on('click', e => {
 
